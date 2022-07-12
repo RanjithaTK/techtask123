@@ -3,13 +3,13 @@ import React from "react"
 // import EditIcon from "@mui/icons-material/Edit"
 // import DeleteIcon from "@mui/icons-material/Delete"
 
-function Table({ data, handleData }) {
+function Table({ data, handleData, handleDelete, handleId }) {
   //   console.log(data)
 
   return (
     <div className="overflow-auto   mx-10 mt-10 mb-20">
       <table className="items-center w-full rounded-lg shadow-md  px-3 ">
-        <thead className="bg-gradient-to-r from-gray-700 to-gray-800 text-gray-100 rounded-lg">
+        <thead className="bg-gradient-to-r bg-teal-800 hover:bg-teal-700 text-gray-100 rounded-lg">
           <tr>
             <th className="px-2 border-b border-solid border-gray-300 py-3 text-sm font-serif font-bold text-left pl-10">
               Name
@@ -44,6 +44,7 @@ function Table({ data, handleData }) {
                 <th className="px-2 border-b border-solid border-gray-300 py-3 text-sm font-serif font-light text-left">
                   <button
                     onClick={() => {
+                      handleId(index)
                       handleData(d)
                     }}
                   >
@@ -51,7 +52,13 @@ function Table({ data, handleData }) {
                   </button>
                 </th>
                 <th className="px-2 border-b border-solid border-gray-300 py-3 text-sm font-serif font-light text-left">
-                  <button>Delete</button>
+                  <button
+                    onClick={() => {
+                      handleDelete(d)
+                    }}
+                  >
+                    Delete
+                  </button>
                 </th>
               </tr>
             ))}
