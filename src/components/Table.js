@@ -1,7 +1,5 @@
 import React from "react"
-// import ReactTable from "react-table"
-// import EditIcon from "@mui/icons-material/Edit"
-// import DeleteIcon from "@mui/icons-material/Delete"
+
 
 function Table({ data, handleData, handleDelete, handleId }) {
   //   console.log(data)
