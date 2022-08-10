@@ -3,6 +3,8 @@ import Table from "./Table"
 // import { useForm, Controller } from "react-hook-form"
 // import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input"
 // import "react-phone-number-input/style.css"
+import AddIcon from "@mui/icons-material/Add"
+
 function MyForm() {
   // const [mobile, setmobile] = useState("")
   // const [isError, setIsError] = useState(false)
@@ -64,6 +66,17 @@ function MyForm() {
   }
   return (
     <div>
+      <Table
+        data={state}
+        handleData={handleData}
+        handleDelete={handleDelete}
+        handleId={handleId}
+        setState={setState}
+      />
+      <div className="bg-gradient-to-r mx-auto bg-teal-800 hover:bg-teal-700 text-gray-100 rounded-lg items-center w-1/6 shadow-md  flex justify-center ">
+        Add A New User
+        <AddIcon />
+      </div>
       <form
         className="max-w-2xl m-auto py-10 mt-10 px-12 border"
         onSubmit={handleSubmit}
@@ -91,19 +104,17 @@ function MyForm() {
           value={details.email}
           required
         />
-        <label className="text-gray-600 font-medium block mt-4">
-          Mobile_Number
-        </label>
+        <label className="text-gray-600 font-medium block mt-4">Role</label>
         <input
           className="border-solid border-gray-300 border py-2 px-4 w-full rounded
   text-gray-700"
-          name="mobile-number"
-          type="tel"
-          id="phone"
+          name="role"
+          type="role"
+          id="role"
           onChange={handleChange}
-          placeholder="enter your mobile-number"
+          placeholder="enter role"
           required
-          value={details.phone}
+          value={details.role}
         />
         <button
           className="mt-4 w-full bg-teal-800 hover:bg-teal-700 text-zinc-50 border py-3 px-6 font-semibold text-lg rounded-full "
@@ -112,12 +123,6 @@ function MyForm() {
           Submit
         </button>
       </form>
-      <Table
-        data={state}
-        handleData={handleData}
-        handleDelete={handleDelete}
-        handleId={handleId}
-      />
     </div>
   )
 }

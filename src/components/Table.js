@@ -1,9 +1,19 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
+import EditIcon from "@mui/icons-material/Edit"
+import DeleteIcon from "@mui/icons-material/Delete"
+const api =
+  "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
 
-
-function Table({ data, handleData, handleDelete, handleId }) {
+function Table({ data, handleData, handleDelete, handleId, setState }) {
   //   console.log(data)
-
+  useEffect(() => {
+    fetch(api)
+      .then((res) => res.json())
+      .then((d) => setState(d))
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
   return (
     <div className="overflow-auto   mx-10 mt-10 mb-20">
       <table className="items-center w-full rounded-lg shadow-md  px-3 ">
@@ -16,7 +26,7 @@ function Table({ data, handleData, handleDelete, handleId }) {
               Email
             </th>
             <th className="px-2 border-b border-solid border-gray-300 py-3 text-sm font-serif font-bold text-left">
-              Phone Number
+              Role
             </th>
             <th className="px-2 border-b border-solid border-gray-300 py-3 text-sm font-serif font-bold text-left">
               Edit
@@ -37,7 +47,7 @@ function Table({ data, handleData, handleDelete, handleId }) {
                   {d.email}
                 </th>
                 <th className="px-2 border-b border-solid border-gray-300 py-3 text-sm font-serif font-light text-left">
-                  {d.phone}
+                  {d.role}
                 </th>
                 <th className="px-2 border-b border-solid border-gray-300 py-3 text-sm font-serif font-light text-left">
                   <button
@@ -46,7 +56,7 @@ function Table({ data, handleData, handleDelete, handleId }) {
                       handleData(d)
                     }}
                   >
-                    Edit
+                    <EditIcon/>
                   </button>
                 </th>
                 <th className="px-2 border-b border-solid border-gray-300 py-3 text-sm font-serif font-light text-left">
@@ -55,7 +65,7 @@ function Table({ data, handleData, handleDelete, handleId }) {
                       handleDelete(d)
                     }}
                   >
-                    Delete
+                    <DeleteIcon/>
                   </button>
                 </th>
               </tr>

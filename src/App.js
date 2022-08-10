@@ -1,6 +1,5 @@
 import Navbar from "./components/Navbar"
 import MyForm from "./components/MyForm"
-import MyPage from "./components/MyPage"
 import Table from "./components/Table"
 //
 
